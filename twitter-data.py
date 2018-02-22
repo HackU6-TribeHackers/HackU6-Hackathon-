@@ -1,53 +1,54 @@
 import requests
 import json
-# from twitter import Twitter, OAuth, TwitterHTTPError, TwitterStream
 import tweepy
+import googlemaps
 
-# all of the authentication keys
-CONSUMER_KEY = '1GHD7OZfz2cBQwwHxE4uYfX4A'
-CONSUMER_SECRET = 'l2jdooUQCAPy4ZPq4D3gPRVHdkvbLf4DN8ESqGAGi7XaPbxUrv'
-ACCESS_TOKEN = '354636776-WTqfVPcdwx6iuG3yuU0wilr5SdKfJInjvwUIy2ng'
-ACCESS_SECRET = 'p5IHsqmjDT22Gouh7Zvedwj1eCtPDjXWEy0HVfq7bI805' 
+# load the api keys data from the json file
+with open("api-keys.json", "r") as api_keys:
+	api_keys_json = json.load(api_keys)
 
+# google authentication keys
+GOOGLE_KEY = api_keys_json['google_api_key']
+
+# all of the twitter authentication keys
+CONSUMER_KEY = api_keys_json['twitter_consumer_key']
+CONSUMER_SECRET = api_keys_json['twitter_consumer_secret']
+ACCESS_TOKEN = api_keys_json['twitter_access_token']
+ACCESS_SECRET = api_keys_json['twitter_access_secret']
+
+location = input("Where are you currently located : ")
+# radius = input("How many miles of a radius would you like to search : ")
+
+gmaps = googlemaps.Client(key=GOOGLE_KEY)
+
+geocode = gmaps.geocode(location)
+
+formatted_address = geocode[0]['formatted_address'].split(',')
+target_city = formatted_address[len(formatted_address) - 3]
+
+# coordinates = geocode[0]['geometry']['location']
+# latitude = str(coordinates['lat'])
+# longitude = str(coordinates['lng'])
+
+# geocode_string = latitude + ',' + longitude + ',' + radius + 'mi'
+target_str = "moving to " + target_city + " :)"
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 api = tweepy.API(auth)
 
-print (api.get_user("twitter"))
+# searches = api.search(q=["buying :) OR buying new home OR new home :) OR home :( OR new home OR moving to " + str(target_city)], geocode = geocode_string count=50)
+searches = api.search(q=target_str, count=50)
 
-# public_tweets = api.home_timeline()
-# for tweet in public_tweets:
-#     print (tweet.text)
+json_tweets = []
+for tweet in searches:
+	# json_tweets.append(json.dumps(tweet._json))
+	# print (json_data)
+	# print (str(tweet))
+	tweet_data = tweet._json
+	print("%s : %s" % (tweet_data['user']['screen_name'], tweet_data['text']))
+	print()
 
-# oauth = OAuth(ACCESS_TOKEN, ACCESS_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
 
-# twitter_stream = TwitterStream(auth=oauth)
-
-# iterator = twitter_stream.statuses.sample()
-
-# # Print each tweet in the stream to the screen 
-# # Here we set it to stop after getting 1000 tweets. 
-# # You don't have to set it to stop, but can continue running 
-# # the Twitter API to collect data for days or even longer. 
-# tweet_count = 1000
-# for tweet in iterator:
-#     tweet_count -= 1
-#     # Twitter Python Tool wraps the data returned by Twitter 
-#     # as a TwitterDictResponse object.
-#     # We convert it back to the JSON format to print/score
-#     print (json.dumps(tweet))  
-    
-#     # The command below will do pretty printing for JSON data, try it out
-#     # print json.dumps(tweet, indent=4)
-       
-#     if tweet_count <= 0:
-#         break 
-
-# # response = requests.get("https://api.twitter.com/1.1/search/tweets.json?q=place%3A07d9cd6afd884001")
-# # print (response.status_code)
-
-# # data = json.loads(response)
-
-# # print (json.dumps(data))
+		
