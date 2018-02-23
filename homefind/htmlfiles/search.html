@@ -8,26 +8,27 @@
     </head>
     <body>
         <h1>Search</h1>
-        <div class="form"> 
-            <form action="{% url 'name' %}" method="post">
-              {% csrf_token %}
+        <div class="box">
+          <div class="form"> 
+              <form action="{% url 'name' %}" method="post">
+                {% csrf_token %}
 
-                <div class = "user">
-                    <span><input id="your_name" type="text" class="user" name="zip" placeholder = "Zip Code or City, State" value="{{ zip }}" maxlength="100" required /></span>
-                </div>
-                <div class = "user">
-                    <select class = "user" name="radius" value ="{{ radius }}">
-                        <option value="10">10 Miles</option>
-                        <option value="25">25 Miles</option>
-                        <option value="50">50 Miles</option>
-                        <option value="100">100 Miles</option>
-                    </select>
-                </div>
-                <input type="submit" value="Submit">
-            </form>
+                  <div class = "user">
+                      <span><input id="your_name" type="text" class="user" name="zip" placeholder = "Zip Code or City, State" value="{{ zip }}" maxlength="100" required /></span>
+                  </div>
+                  <div class = "user">
+                      <select class = "user" name="radius" value ="{{ radius }}">
+                          <option value="10">10 Miles</option>
+                          <option value="25">25 Miles</option>
+                          <option value="50">50 Miles</option>
+                          <option value="100">100 Miles</option>
+                      </select>
+                  </div>
+                  <input type="submit" value="Submit">
+              </form>
 
+          </div>
         </div>
-
     </body>
 </html>
 
