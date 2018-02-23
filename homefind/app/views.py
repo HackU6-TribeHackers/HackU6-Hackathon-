@@ -20,14 +20,15 @@ def name(request):
         # create a form instance and populate it with data from the request:
         zip = request.POST.get('zip', None)
         radius = request.POST.get('radius', None)
-        tweets, users = mainReceiver(zip, radius)
+        # tweets, users = mainReceiver(zip, radius)
+        tweets = mainReceiver(zip, radius)
         # for i in range(5):
         #     print("%s : %s" % (users[i], tweets[i]))
         # check whether it's valid:
         # process the data in form.cleaned_data as required
         # ...
         # redirect to a new URL:
-        return render(request, 'name.html', {'zip': zip, 'radius': radius})
+        return render(request, 'name.html', {'zip': zip, 'radius': radius, 'tweets': tweets})
 
 
     # if a GET (or any other method) we'll create a blank form

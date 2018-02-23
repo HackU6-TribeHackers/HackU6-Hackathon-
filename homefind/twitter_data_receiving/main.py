@@ -14,8 +14,9 @@ CITY_NEEDED = [0, 7, 10, 11, 12, 14]
 def getTwitterData(api, key_phrases, geocode_string, target_city):
 
 	# create arrays to hold all of the found tweets and their respective users
-	all_tweets_text = []
-	all_tweet_users = []
+	# all_tweets_text = []
+	# all_tweet_users = []
+	all_tweets = []
 
 	num_tweets_to_show = 10
 
@@ -45,10 +46,12 @@ def getTwitterData(api, key_phrases, geocode_string, target_city):
 			
 			if not tweet_text.startswith('RT ', 0, 3):
 				# print ("%s : %s" % (tweet_user, tweet_text))
-				all_tweets_text.append(tweet_text)
-				all_tweet_users.append(tweet_user)
+				# all_tweets_text.append(tweet_text)
+				# all_tweet_users.append(tweet_user)
+				tweet = tweet_user + ' : ' + tweet_text
+				all_tweets.append(tweet)
 
-	return all_tweets_text, all_tweet_users
+	return all_tweets
 
 
 """Function to get the geocode for the location"""
@@ -106,9 +109,9 @@ def mainReceiver(location, radius):
 	api = tweepy.API(auth)
 
 
-	relevant_tweets_text, relevant_tweets_users = getTwitterData(api, key_phrases, geocode_string, target_city)
+	tweets_list = getTwitterData(api, key_phrases, geocode_string, target_city)
 
-	return relevant_tweets_text, relevant_tweets_users
+	return tweets_list
 
 
 # print (len(relevant_tweets_text))
