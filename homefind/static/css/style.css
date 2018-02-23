@@ -85,3 +85,19 @@ h1{
 }
 
 
+.styled-select {
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   background-color: #4da6ff;
+   margin: 5px;
+}
+
+
+
+
+
+
