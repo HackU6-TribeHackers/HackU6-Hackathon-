@@ -10,6 +10,7 @@ def login(request):
     return render(request,"login.html")
 
 def search(request):
+
     return render(request,"search.html")
 
 def name(request):
