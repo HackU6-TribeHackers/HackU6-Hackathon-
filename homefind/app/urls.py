@@ -10,5 +10,6 @@ urlpatterns = [
     #path('index', views.index, name='index'),
     #path('login', views.login, name='login')
     url(r'^login/', views.login, name='login'),
-    url(r'^search/', views.search, name='search')
+    url(r'^search/', views.search, name='search'),
+    url(r'^name/', views.name, name='name')
 ]

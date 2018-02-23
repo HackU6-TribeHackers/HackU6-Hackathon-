@@ -8,9 +8,11 @@
     </head>
     <body>
         <div class="form"> 
-            <form action="/search/" method="post">
+            <form action="{% url 'name' %}" method="POST">
+              {% csrf_token %}
+
                 <div class = "user">
-                    <span><input type="text" class="user" placeholder = "Zip Code or City, State" value="{{ search_query }}"></span>
+                    <span><input id="your_name" type="text" class="user" name="zip" placeholder = "Zip Code or City, State" value="{{ zip }}" maxlength="100" required /></span>
                 </div>
                 <div class = "user">
                     <select class = "user">
@@ -20,7 +22,9 @@
                         <option value="100mi">100 Miles</option>
                     </select>
                 </div>
+                <input type="submit" value="Submit">
             </form>
+
         </div>
 
     </body>

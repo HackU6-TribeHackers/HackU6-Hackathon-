@@ -1,0 +1,17 @@
+{% load static from staticfiles %}                                                    
+
+<html>
+    <title></title>
+    <head>
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    </head>
+    <body>
+        <form action="{% url 'name' %}" method="get">
+            {% csrf_token %}
+            {{ zip }}
+            <input type="submit" value="Submit" />
+        </form>
+
+    </body>
+</html>
