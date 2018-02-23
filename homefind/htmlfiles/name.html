@@ -9,7 +9,7 @@
     <body>
         <form action="{% url 'name' %}" method="get">
             {% csrf_token %}
-            Searching in area {{ zip }} within a radius of 10 Miles...
+            Searching in area {{ zip }} within a radius of {{ radius }} Miles...
         </form>
 
     </body>
