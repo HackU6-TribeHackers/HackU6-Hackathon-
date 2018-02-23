@@ -1,6 +1,10 @@
 ﻿#Tribe Hackers Challenge 2
  
+ 
+ 
+ 
  Uses:
+ 
 -User keeps posting about how they want to move to a new neighborhood to grow a family, agent uses information to find the right scenery for the user 
 
 -User complains how the rent/monthly payments should give a better household. The agent may use information to find a home in better condition for equal to or less than the price of the current user's house 
