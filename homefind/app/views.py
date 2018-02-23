@@ -7,6 +7,8 @@ def index(request):
 def login(request):
     return render(request,"login.html")
 
+def search(request):
+    return render(request,"search.html")
 
 
 # Create your views here.
