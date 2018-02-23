@@ -16,13 +16,14 @@ def name(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        zip = request.POST.get('textfield', None)
-        print(zip)
+        zip = request.POST.get('zip', None)
+        radius = request.POST.get('radius', None)
         # check whether it's valid:
         # process the data in form.cleaned_data as required
         # ...
         # redirect to a new URL:
-        return render(request, 'name.html', {'zip': zip})
+        return render(request, 'name.html', {'zip': zip, 'radius': radius})
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
