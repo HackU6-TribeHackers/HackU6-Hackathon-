@@ -38,5 +38,5 @@ api = tweepy.API(auth)
 
 relevant_tweets_text, relevant_tweets_users = getTwitterData(api, key_phrases, geocode_string, target_city, CITY_NEEDED)
 
-print (len(relevant_tweets_text))
-print (len(relevant_tweets_users))
+# print (len(relevant_tweets_text))
+# print (len(relevant_tweets_users))
