@@ -10,6 +10,8 @@
         <form action="{% url 'name' %}" method="get">
             {% csrf_token %}
             Searching in area {{ zip }} within a radius of 10 Miles...
+            10 Miles
+            <input type="submit" value="Submit" />
         </form>
 
     </body>
