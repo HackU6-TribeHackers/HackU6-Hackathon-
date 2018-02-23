@@ -1,0 +1,20 @@
+{% load static from staticfiles %}                                                    
+
+<html>
+    <title></title>
+    <head>
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="form"> 
+            <form action="/search/" method="post">
+                <div class = "user">
+                    <span><input type="text" class="user" placeholder = "Search text here..." value="{{ search_query }}"></span>
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>
+
