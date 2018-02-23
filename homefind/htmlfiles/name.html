@@ -9,8 +9,14 @@
     <body>
         <form action="{% url 'name' %}" method="get">
             {% csrf_token %}
-            Searching in area {{ zip }} within a radius of 10 Miles...
+            Showing tweets in the area of {{ zip }} within a radius of {{ radius }} Miles...
         </form>
+        {% for tweet in tweets %}
+            {{ tweet }}
+            <br>
+            <br>
+        {% endfor %}
+
 
     </body>
 </html>
