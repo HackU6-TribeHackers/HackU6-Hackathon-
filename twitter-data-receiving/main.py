@@ -16,7 +16,7 @@ with open("requirements/key-phrases.txt", "r") as phrases_file:
 # print(key_phrases)
 
 # load the api keys data from the json file
-with open("../api-keys.json", "r") as api_keys:
+with open("requirements/api-keys.json", "r") as api_keys:
 	api_keys_json = json.load(api_keys)
 
 # google authentication key
